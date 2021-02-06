@@ -1,0 +1,10 @@
+<h5 class="my-5">searched item:</h5>
+<div class="row">
+    <div class="col-sm-4 col-md-3 col-lg-2 p-2" *ngFor="let item of allProduct">
+        <app-product-card [data]="item"></app-product-card>
+    </div>
+    <p class="text-center m-5" *ngIf="!allProduct || allProduct?.length==0">
+        {{allProduct?.length==0?'No data fount':'Loading...'}}
+    </p>
+    <app-loader *ngIf="isLoading"></app-loader>
+</div>

@@ -1,0 +1,42 @@
+<div class="mt-2">
+    <div *ngIf="productDetail">
+        <div class="row">
+            <div class="col-sm-6 col-md-5 productDetail">
+                <h4 class="text-center">{{productDetail.strDrink|| productDetail.strIngredient}}</h4>
+                <img [src]="productDetail.strDrinkThumb" alt="No image">
+            </div>
+            <div class="col-sm-6 col-md-7 row ingredient" *ngIf="otherProducts">
+                <div class="col-sm-6 col-md-4" *ngFor="let item of otherProducts;let i=index"
+                    (click)="getIngredientDetail('i',item.idDrink)">
+                    <div class="ingredientImg">
+                        <img [src]="item.strDrinkThumb" alt="" class="w-100">
+                    </div>
+                    <p class="text-center">{{item.strDrink}} </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-7 row ingredient m-auto" *ngIf="!otherProducts">
+                <div class="col-sm-6 col-md-4" *ngFor="let item of ingridientCount;let i=index">
+                    <div *ngIf="productDetail['strIngredient'+(i+1)]"
+                        (click)="getIngredientDetail('iid',productDetail['strIngredient'+(i+1)])">
+                        <div class="ingredientImg">
+
+                        </div>
+                        <p class="text-center">
+                            <span *ngIf="productDetail['strMeasure'+(i+1)]">{{productDetail['strMeasure'+(i+1)]}}</span>
+                            {{productDetail['strIngredient'+(i+1)]}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 my-2">
+                <p><b>Instruction:</b> <br>
+                    {{productDetail.strInstructions || productDetail.strDescription}}
+                </p>
+            </div>
+        </div>
+        <div class="text-center m-3">
+            <span class="characterLink" [routerLink]="['/search',item]" *ngFor="let item of charArray">{{item}}</span>
+        </div>
+    </div>
+    <app-loader *ngIf="isLoading"></app-loader>
+</div>

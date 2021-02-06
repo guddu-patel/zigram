@@ -1,0 +1,50 @@
+<div class="mt-2">
+    <div>
+        Filter by:
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                <select [(ngModel)]="filtered.category" class="form-control" (change)="getFilterData('category','c')">
+                    <option value="">---Select category---</option>
+                    <option *ngFor="let item of filters.category" value="{{item.strCategory}}">{{item.strCategory}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                <select [(ngModel)]="filtered.glass" class="form-control" (change)="getFilterData('glass','g')">
+                    <option value="">---Select Glass---</option>
+                    <option *ngFor="let item of filters.glass" value="{{item.strGlass}}">{{item.strGlass}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                <select [(ngModel)]="filtered.ingredient" class="form-control"
+                    (change)="getFilterData('ingredient','i')">
+                    <option value="">---Select Ingredient---</option>
+                    <option *ngFor="let item of filters.ingredient" value="{{item.strIngredient1}}">
+                        {{item.strIngredient1}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                <select [(ngModel)]="filtered.alcoholic" class="form-control" (change)="getFilterData('alcoholic','a')">
+                    <option value="">---Select alcoholic---</option>
+                    <option *ngFor="let item of filters.alcoholic" value="{{item.strAlcoholic}}">{{item.strAlcoholic}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="usr">Search:</label>
+        <input type="text" class="form-control" [(ngModel)]="searchText" #search placeholder="Search product...">
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-md-3 col-lg-2 p-2" *ngFor="let item of allProduct">
+            <app-product-card [data]="item"></app-product-card>
+        </div>
+    </div>
+    <p class="text-center m-5" *ngIf="!allProduct || allProduct?.length==0">
+        {{allProduct?.length==0?'No data fount':'Loading...'}}
+    </p>
+    <app-loader *ngIf="isLoading"></app-loader>
+</div>

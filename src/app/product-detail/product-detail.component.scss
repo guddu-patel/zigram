@@ -1,0 +1,27 @@
+.productDetail{
+    img{
+        width: 100%;
+    }
+}
+.ingredient{
+    .ingredientImg{
+    width: 100%;
+    background-color: red;
+    min-height: 100px;
+
+    img{
+        height: inherit;
+    }
+}
+}
+.characterLink{
+    padding: 5px 10px;
+    text-transform:uppercase;
+}
+.characterLink:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+.characterLink:not(:last-child){
+    border-right: 1px solid grey;
+}
