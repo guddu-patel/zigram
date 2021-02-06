@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
+## Demo
+Live demo is available to see working site [here](https://zigram.guddukumar.com.np/)
+
 ## To run the project
 1. Download project from [Here](https://github.com/guddu-patel/zigram.git).
 
